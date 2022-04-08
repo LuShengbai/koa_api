@@ -19,6 +19,7 @@ class UserController {
             return
         }
 
+        
         //check user_name is not exist
         const selecUser = await userdao.selectUserByName(user_name);
 

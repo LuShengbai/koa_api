@@ -1,11 +1,11 @@
 const Router = require('koa-router')
-
+const {crpytPassword} = require('../middleware/user.middleware')
 const {register,login,selectAll,getUserByParams,deleteUser,updateUser} = require('../controller/user.controller')
 
 const router = new Router({prefix: '/user'})
 
 // register
-router.post('/register', register)
+router.post('/register',crpytPassword, register)
 
 // login
 router.post('/login', login)

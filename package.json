@@ -9,6 +9,7 @@
   "author": "yzy",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
