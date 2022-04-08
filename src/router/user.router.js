@@ -1,6 +1,6 @@
 const Router = require('koa-router')
 
-const {register,login,selectAll} = require('../controller/user.controller')
+const {register,login,selectAll,getUserByParams,deleteUser,updateUser} = require('../controller/user.controller')
 
 const router = new Router({prefix: '/user'})
 
@@ -12,6 +12,15 @@ router.post('/login', login)
 
 // selectAll
 router.get('/selectAll', selectAll)
+
+// selectUserByParams
+router.post('/selectUsrByParams', getUserByParams)
+
+//deleteUser
+router.post('/deleteUser', deleteUser)
+
+//updateUser
+router.post('/updateUser', updateUser)
 
 
 

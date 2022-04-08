@@ -4,6 +4,16 @@ const userdao = require('../dao/user.dao');
 class UserServive {
     async createUser(user_name, password) {
 
+        //check user_name and  password is not null
+        if (!user_name || !password) {
+            return {
+                code: -1,
+                msg: '用户名或密码不能为空'
+            }
+        }
+
+
+        //check user_name is not exist
         const selecUser = await userdao.selectUserByName(user_name);
 
         if (selecUser) {
@@ -13,12 +23,16 @@ class UserServive {
             }
         }
 
+        //create user
         const result = await userdao.createUser(user_name, password);
-console.log("//////////////////////////////////////////////////////////////////");
-        console.log(result);
+
+
         return {
             code: 200,
-            result: result,
+            result: {
+                id: result.id,
+                user_name: result.user_name,
+            },
             msg: '注册成功'
         }
 
@@ -72,6 +86,26 @@ console.log("//////////////////////////////////////////////////////////////////"
                 code: 400,
                 msg: '用户名或密码错误'
             }
+        }
+    }
+
+    async getUserByParams(id,user_name, password,is_admin) {
+        
+        const result = await userdao.selectUserByParams(id,user_name, password,is_admin);
+
+
+        //check result is not null
+        if (!result) {
+            return {
+                code: 400,
+                msg: '查询失败'
+            }
+        }
+
+        return {
+            code: 200,
+            result: result,
+            msg: '查询成功'
         }
     }
 
