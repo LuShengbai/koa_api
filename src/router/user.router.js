@@ -1,5 +1,5 @@
 const Router = require('koa-router')
-const {crpytPassword} = require('../middleware/user.middleware')
+const {crpytPassword,checkPassword} = require('../middleware/user.middleware')
 const {register,login,selectAll,getUserByParams,deleteUser,updateUser} = require('../controller/user.controller')
 
 const router = new Router({prefix: '/user'})
@@ -8,7 +8,7 @@ const router = new Router({prefix: '/user'})
 router.post('/register',crpytPassword, register)
 
 // login
-router.post('/login', login)
+router.post('/login', checkPassword,login)
 
 // selectAll
 router.get('/selectAll', selectAll)
@@ -20,7 +20,7 @@ router.post('/selectUsrByParams', getUserByParams)
 router.post('/deleteUser', deleteUser)
 
 //updateUser
-router.post('/updateUser', updateUser)
+router.post('/updateUser',crpytPassword, updateUser)
 
 
 

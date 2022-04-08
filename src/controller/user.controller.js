@@ -1,4 +1,5 @@
 const userdao = require('../dao/user.dao');
+const bcrypt = require('bcryptjs')
 
 
 class UserController {
@@ -19,7 +20,7 @@ class UserController {
             return
         }
 
-        
+
         //check user_name is not exist
         const selecUser = await userdao.selectUserByName(user_name);
 
@@ -49,35 +50,13 @@ class UserController {
 
     // 登录
     async login(ctx, next) {
-        const { user_name, password } = ctx.request.body
-
-        //check user_name and  password is not null
-        if (!user_name || !password) {
-            ctx.status = 400
-            ctx.body = {
-                code: -1,
-                msg: '用户名或密码不能为空'
-            }
-
-            return
-        }
-
-        const result = await userdao.selectUser(user_name, password);
-
-        if (result) {
+      
             ctx.status = 200
             ctx.body = {
                 code: 200,
                 msg: '登录成功'
             }
-        } else {
-            ctx.status = 400
-            ctx.body = {
-                code: 400,
-                msg: '用户名或密码错误'
-            }
-        }
-
+        
 
     }
 
