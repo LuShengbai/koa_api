@@ -1,4 +1,4 @@
-const {createUser} = require('../service/user.service')
+const {createUser,login,selectAll} = require('../service/user.service')
 
 
 class UserController {
@@ -10,20 +10,24 @@ class UserController {
         
         const result = await createUser(user_name, password)
 
-        console.log(result);
 
-        ctx.body = {
-            code: 200,
-            msg: result
-        }
+        ctx.body = result
     }
 
     // 登录
-    async login(ctx, next) {
-        ctx.body = {
-            code: 200,
-            msg: '登录成功'
-        }
+    async login(ctx, next)  {
+        const {user_name, password} = ctx.request.body
+
+        const result = await login(user_name, password)
+
+        ctx.body = result
+    }
+
+    // 查询所有用户
+    async selectAll(ctx, next) {
+        const result = await selectAll()
+
+        ctx.body = result
     }
 }
 

@@ -3,7 +3,6 @@ const env = require('./config/config.default')
 
 const app = require('./app')
 
-
 const port = env.APP_PORT
 
 
