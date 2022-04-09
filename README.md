@@ -43,3 +43,9 @@ app.listen(3000, () => {
 ```
 
     4. 安装dotenv 读取配置文件
+
+
+
+### 三.鉴权
+    1. 安装jsonwebtoken.
+

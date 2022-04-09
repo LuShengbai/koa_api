@@ -1,6 +1,7 @@
 const userdao = require('../dao/user.dao');
-const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
+const { JWT_SECRET } = require('../config/config.default')
 
 class UserController {
     // 注册
@@ -50,13 +51,29 @@ class UserController {
 
     // 登录
     async login(ctx, next) {
-      
+
+        const { user_name } = ctx.request.body
+
+        try {
+
+            //get userinfo  by user_name
+            const {password,...res} = await userdao.selectUserByParams({user_name});
+            
+            //record userinfo to token
+            const token = jwt.sign( res  ,JWT_SECRET, { expiresIn: '1h' })      
+
             ctx.status = 200
             ctx.body = {
-                code: 200,
+                code: 0,
+                token: token,
                 msg: '登录成功'
             }
-        
+    
+
+        } catch (error) {
+            console.log(error);
+        }
+
 
     }
 
@@ -75,6 +92,7 @@ class UserController {
             return
         }
 
+     
         const result = await userdao.updateUser(user_name, password, is_admin);
 
         if (!result[0]) {

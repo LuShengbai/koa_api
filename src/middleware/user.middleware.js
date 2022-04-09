@@ -6,7 +6,7 @@ const crpytPassword = async (ctx, next) => {
     const { password } = ctx.request.body
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(password, salt)
-    console.log(hash);
+
     ctx.request.body.password = hash
     await next()
 }
@@ -44,7 +44,7 @@ const checkPassword = async (ctx, next) => {
         //check password is right.
 
         const isRight = bcrypt.compareSync(password, result.password.trim())
-        console.log(isRight);
+
         if (!isRight) {
             ctx.status = 400
             ctx.body = {

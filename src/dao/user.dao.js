@@ -82,7 +82,7 @@ class UserDao {
     }
 
     //getUserByCondition
-    async selectUserByParams(id, user_name, password, is_admin) {
+    async selectUserByParams({ id, user_name, password, is_admin }) {
 
         const whereOpt = {}
 
@@ -91,14 +91,12 @@ class UserDao {
         password && Object.assign(whereOpt, { password })
         is_admin && Object.assign(whereOpt, { is_admin })
 
-
-        console.log(whereOpt);
-
-        const result = await User.findOne({
+        const res = await User.findOne({
             attributes: ['id', 'user_name', 'password', 'is_admin'],
-            where: whereOpt
+            where: whereOpt,
         })
-        return result
+
+        return res ? res.dataValues : null
     }
 
 }
