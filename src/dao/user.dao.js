@@ -38,6 +38,51 @@ class UserDao {
         return result
     }
 
+    //updateUserByCondition
+    async updateById({ id, user_name, password, is_admin }) {
+        const whereOpt = { id }
+        const newUser = {}
+
+        user_name && Object.assign(newUser, { user_name })
+        password && Object.assign(newUser, { password })
+        is_admin && Object.assign(newUser, { is_admin })
+    
+        let res = null
+
+        try {
+             res = await User.update(newUser, { where: whereOpt })
+
+        } catch (error) {
+            throw new Error(error)
+            
+        }
+
+
+        return res[0] > 0 ? true : false
+      }
+
+
+    /**
+     * change password
+     * @param {*} user_name 
+     * @returns 
+     */
+
+    async changePassword(user_name, password) {
+        const result = await User.update({
+            password
+        }, {
+            where: {
+                user_name
+            }
+        })
+        return result
+    }
+
+
+
+
+
     /**
      * 删除用户
      * @param {*} user_name

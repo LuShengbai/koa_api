@@ -7,7 +7,7 @@ const ErrorType = require('../constant/err.type')
 const auth = async (ctx, next) => {
 
     //get authorization 
-    const { authorization } = ctx.request.header;
+    const { authorization = '' } = ctx.request.header;
 
     //get token
     const token = authorization.split(' ')[1];
@@ -17,6 +17,7 @@ const auth = async (ctx, next) => {
     try {
         const res = jwt.verify(token, JWT_SECRET)
         ctx.state.user = res
+
 
     }
     catch (error) {
@@ -60,4 +61,21 @@ const auth = async (ctx, next) => {
     await next()
 }
 
-module.exports = { auth }
+const hasAdminPermission = async (ctx, next) => {
+    const { is_admin } = ctx.state.user
+
+    if (is_admin !== true) {
+        ctx.status = 403
+        ctx.body = {
+            code: '10105',
+            message: '没有权限',
+            result: '',
+            }
+        return
+    }
+    await next()
+}
+
+
+
+module.exports = { auth,hasAdminPermission }
