@@ -769,6 +769,13 @@ koa-convert@^2.0.0:
     co "^4.6.0"
     koa-compose "^4.1.0"
 
+koa-parameter@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmmirror.com/koa-parameter/-/koa-parameter-3.0.1.tgz#b0645f2412eadb79d3a1808d17ed30824a54c887"
+  integrity sha512-lkQBeLjO1Se7rGCj3DaHjUDDaT2rKNlxqX901X6b41/sAHpErxMj8c9eFuFbn7BzjZNvxS1c+uCtHJSOoeMldQ==
+  dependencies:
+    parameter "^2.2.0"
+
 koa-router@^10.1.1:
   version "10.1.1"
   resolved "https://registry.npmmirror.com/koa-router/-/koa-router-10.1.1.tgz#20809f82648518b84726cd445037813cd99f17ff"
@@ -1037,6 +1044,11 @@ packet-reader@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/packet-reader/-/packet-reader-1.0.0.tgz#9238e5480dedabacfe1fe3f2771063f164157d74"
   integrity sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==
+
+parameter@^2.2.0:
+  version "2.4.0"
+  resolved "https://registry.npmmirror.com/parameter/-/parameter-2.4.0.tgz#85ea52e9dfee80265a07b086edbc352e68b39733"
+  integrity sha512-PxENY9SO4qYIBRUXJ7dM/nWxbzC4PIDws1U7IQsZ0tlZvrcuAKxJQZV6Jf0Lmpl1mSYaEPcvhMOL2UHtLU2Xtw==
 
 parseurl@^1.3.2:
   version "1.3.3"
