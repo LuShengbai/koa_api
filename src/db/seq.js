@@ -28,6 +28,11 @@ const seq = new Sequelize(MYSQL_DB, MYSQL_USER, MYSQL_PWD, {
     host: MYSQL_HOST,
     dialect: 'mysql',
     port: MYSQL_PORT,
+    pool: {   //连接池设置
+        max: 5, //最大连接数
+        min: 0, //最小连接数
+        idle: 10000
+    },
 })
 
 
