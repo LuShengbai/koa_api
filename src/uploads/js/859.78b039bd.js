@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkvue_app"]=self["webpackChunkvue_app"]||[]).push([[859],{1859:function(e,t,n){n.r(t),n.d(t,{default:function(){return p}});var u=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"home"},[e._v(" Home ")])},a=[],r={name:"Home",data(){return{}}},c=r,s=n(1001),l=(0,s.Z)(c,u,a,!1,null,"57c86ece",null),p=l.exports}}]);
+//# sourceMappingURL=859.78b039bd.js.map

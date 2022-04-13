@@ -4,7 +4,7 @@ const {auth,hasAdminPermission} = require('../middleware/auth.middleware')
 const {checkFileType}  = require('../middleware/checkFileType.middle')
 const {validator}  = require('../middleware/goods.middle')
 
-const {upload,addGoods} = require('../controller/goods.controller')
+const {upload,addGoods,selectAllGoods} = require('../controller/goods.controller')
 
 const router = new Router({prefix: '/goods'})
 
@@ -13,6 +13,9 @@ router.post('/upload',auth,hasAdminPermission,checkFileType, upload)
 
 //post a new goods
 router.post('/addGoods',auth,hasAdminPermission,validator,addGoods)
+
+//selectall goods
+router.get('/selectAllGoods',auth,hasAdminPermission,selectAllGoods)
 
 module.exports = router
 

@@ -55,7 +55,29 @@ class GoodsController {
 
     }
 
+    async selectAllGoods(ctx, next) {
 
+        try {
+            const result = await goodsdao.selectAllGoods()
+
+            ctx.body = {
+                code: 200,
+                result: result,
+                msg: '查询成功'
+            }
+
+            return
+
+        } catch (error) {
+
+            ctx.body = {
+                code: 400,
+                msg: error.message
+            }
+            return
+
+        }
+    }
 }
 
 
